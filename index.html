@@ -273,112 +273,111 @@
   ];
 
   const Qs = [
-
 {
 q:"What is the capital city of Indonesia?",
 ans:"Jakarta",
+phon:"/dʒəˈkɑːrtə/",
 opts:["Bandung","Surabaya","Jakarta","Medan"],
 exp:"Jakarta is the capital city of Indonesia."
 },
-
 {
 q:"Which island is the most populated in Indonesia?",
 ans:"Java",
+phon:"/ˈdʒɑːvə/",
 opts:["Bali","Java","Sumatra","Kalimantan"],
 exp:"Java is the most populated island in Indonesia."
 },
-
 {
 q:"What is the national language of Indonesia?",
 ans:"Indonesian",
+phon:"/ˌɪndoʊˈniːʒən/",
 opts:["Javanese","Malay","Indonesian","Sundanese"],
 exp:"Indonesian is the official national language."
 },
-
 {
 q:"Which Indonesian island is famous for the Komodo dragon?",
 ans:"Flores",
+phon:"/ˈflɔːreɪs/",
 opts:["Java","Sulawesi","Flores","Bali"],
 exp:"Komodo dragons are found on islands near Flores."
 },
-
 {
 q:"What is the name of Indonesia's national flag?",
 ans:"The Red and White",
+phon:"/ðə red ænd waɪt/",
 opts:["The Red and White","Garuda","Nusantara","Sang Saka"],
 exp:"Indonesia's national flag is known as the Red and White."
 },
-
 {
 q:"Which city is known as the 'City of Heroes' in Indonesia?",
 ans:"Surabaya",
+phon:"/ˌsuːrəˈbaɪə/",
 opts:["Jakarta","Bandung","Surabaya","Yogyakarta"],
 exp:"Surabaya earned this title because of its role in Indonesia's independence struggle."
 },
-
 {
 q:"What is the traditional Indonesian puppet show called?",
 ans:"Wayang",
+phon:"/ˈwaɪɑːŋ/",
 opts:["Batik","Wayang","Angklung","Gamelan"],
 exp:"Wayang is a traditional Indonesian puppet performance."
 },
-
 {
 q:"Which traditional Indonesian fabric is recognized by UNESCO?",
 ans:"Batik",
+phon:"/bəˈtiːk/",
 opts:["Songket","Tenun","Batik","Ulos"],
 exp:"Batik was recognized by UNESCO as an Intangible Cultural Heritage."
 },
-
 {
 q:"What is the national emblem of Indonesia?",
 ans:"Garuda",
+phon:"/ɡəˈruːdə/",
 opts:["Tiger","Komodo Dragon","Garuda","Eagle"],
 exp:"Garuda Pancasila is Indonesia's national emblem."
 },
-
 {
 q:"Which Indonesian province is famous for the Raja Ampat Islands?",
 ans:"West Papua",
+phon:"/west pəˈpuːə/",
 opts:["West Papua","Aceh","Bali","Riau"],
 exp:"Raja Ampat is located in West Papua."
 },
-
 {
 q:"What is the capital city of East Java Province?",
 ans:"Surabaya",
+phon:"/ˌsuːrəˈbaɪə/",
 opts:["Malang","Madiun","Surabaya","Kediri"],
 exp:"Surabaya is the capital city of East Java."
 },
-
 {
 q:"Which musical instrument is made from bamboo and comes from West Java?",
 ans:"Angklung",
+phon:"/ˈɑːŋklʊŋ/",
 opts:["Gong","Angklung","Sasando","Tifa"],
 exp:"Angklung is a bamboo musical instrument from West Java."
 },
-
 {
 q:"What is the largest island in Indonesia?",
 ans:"Kalimantan",
+phon:"/ˌkælɪˈmæntæn/",
 opts:["Java","Bali","Kalimantan","Lombok"],
 exp:"Kalimantan is the largest island belonging to Indonesia."
 },
-
 {
 q:"Which Indonesian holiday celebrates the end of Ramadan?",
 ans:"Eid al-Fitr",
+phon:"/iːd əl ˈfɪtər/",
 opts:["Nyepi","Christmas","Eid al-Fitr","Vesak"],
 exp:"Eid al-Fitr marks the end of the Ramadan fasting month."
 },
-
 {
 q:"Yogyakarta is famous for its traditional culture and the _____ Temple nearby.",
 ans:"Prambanan",
+phon:"/prɑːmˈbɑːnɑːn/",
 opts:["Borobudur","Prambanan","Mendut","Muaro Jambi"],
 exp:"Prambanan Temple is located near Yogyakarta and is one of Indonesia's most famous temples."
 }
-
 ];
 
   let cur = 0, answered = [], userAns = [];
@@ -420,7 +419,12 @@ exp:"Prambanan Temple is located near Yogyakarta and is one of Indonesia's most 
       fbHTML = `<div class="feedback-box ${ok ? 'fb-correct' : 'fb-wrong'}">
         <i class="ti ${ok ? 'ti-circle-check' : 'ti-circle-x'} fb-icon"></i>
         <div>
-          <div class="fb-title">${ok ? 'Correct!' : 'Incorrect — the right answer is: ' + q.ans}</div>
+         <div class="fb-title">
+${ok
+? `Correct!<br><span style="font-size:12px;font-weight:400;">${q.ans} ${q.phon}</span>`
+: `Incorrect — the right answer is: ${q.ans}<br><span style="font-size:12px;font-weight:400;">${q.phon}</span>`
+}
+</div>
           <div class="fb-desc">${q.exp}</div>
         </div>
       </div>`;
